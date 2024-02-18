@@ -1,0 +1,51 @@
+{% extends 'base5.html.twig' %}
+
+{% block title %}Profil du Patient{% endblock %}
+{% block body %}
+
+    {% block style %}
+        <style>
+            /* Style pour le lien de profil */
+            .profile-link {
+                position: absolute;
+                top: 10px; /* Ajustez la position selon vos besoins */
+                right: 10px; /* Ajustez la position selon vos besoins */
+                color: #007bff; /* Couleur du lien */
+                text-decoration: none;
+                margin-left: 10px; /* Espace entre les liens */
+            }
+        </style>
+    {% endblock %}
+
+
+    {% block corps %}
+        <h1>Profil du Patient</h1>
+        <a href="{{ path('app_patient_edit', {'id': patient.id}) }}" class="btn btn-primary profile-btn">Modifier les coordonnées</a>
+
+
+        <!-- Placer la photo de profil en haut à droite -->
+        <div style="position: absolute; top: 10px; right: 10px;">
+            {% if patient.profileImage is not null %}
+                <img src="{{ asset('uploads/profile_images/' ~ patient.profileImage) }}" alt="Photo de profil" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
+            {% else %}
+                <!-- Afficher une image par défaut si aucune image de profil n'est définie -->
+                <div style="width: 100px; height: 100px; background-color: #f0f0f0; border-radius: 50%;"></div>
+            {% endif %}
+
+        </div>
+
+        <!-- Afficher les autres informations du patient -->
+        <p>Nom: {{ patient.nom }}</p>
+        <p>Prénom: {{ patient.prenom }}</p>
+        <p>Email: {{ patient.email }}</p>
+        <p>Numéro de téléphone: {{ patient.numerotelephone }}</p>
+        <p>Rôle: {{ patient.role }}</p>
+        <p>Ville: {{ patient.ville }}</p>
+        <p>Sexe: {{ patient.sexe }}</p>
+
+        <!-- Lien de modification vers la page de formulaire de mise à jour -->
+
+    {% endblock %}
+{% endblock %}
+
+

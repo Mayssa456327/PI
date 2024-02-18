@@ -1,0 +1,13 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}New Participant{% endblock %}
+
+{% block body %}
+    <h1>Create new Participant</h1>
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {{ include('participant/_form.html.twig') }}
+
+    <a href="{{ path('app_evenement_indexFront') }}">back to list</a>
+{% endblock %}

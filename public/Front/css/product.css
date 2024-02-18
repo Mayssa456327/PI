@@ -1,0 +1,129 @@
+body{
+  width:100%;
+}
+.section-p1{
+  padding: 40px 80px;
+}
+#product1{
+  text-align: center;
+}
+#product1 .pro_container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+#product1 .pro{
+  width: 23%;
+  min-width: 250px;
+  padding: 10px 12px;
+  border: 1px solid #cce7d0;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+  margin: 5px 0;
+  transition: 0.2s ease;
+  position: relative;
+}
+
+#product1 .pro::hover{
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+#product1 .pro img{
+  width: 100%;
+  border-radius: 20px;
+}
+
+#product1 .pro .des{
+  text-align: start;
+  padding: 10px 0;
+}
+
+#product1 .pro .des span{
+  color: #606063;
+  font-size: 12px;
+}
+
+#product1 .pro .des h5{
+  padding-top: 7px;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+#product1 .pro .des h4{
+  padding-top: 7px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #088178;
+}
+
+#prodetails {
+  display: flex;
+
+  margin-top: 60px;
+}
+
+#prodetails .single-pro-image {
+  width: 40%;
+  margin-right: 50px;
+}
+
+.small-img-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+#prodetails .single-pro-details {
+  width: 50%;
+  padding-top: 50px;
+}
+
+#prodetails .single-pro-details h4 {
+  padding: 40px 0 20px 0;
+}
+
+#prodetails .single-pro-details h2 {
+  font-size: 26px;
+}
+
+
+#prodetails .single-pro-details input {
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  #prodetails .single-pro-details input:focus {
+    outline: none;
+  }
+ 
+
+#prodetails .single-pro-details button {
+  background-color: #008178;
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+#prodetails .single-pro-details span{
+    line-height: 25px;
+}

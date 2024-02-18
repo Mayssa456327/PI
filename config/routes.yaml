@@ -1,0 +1,18 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+send_test_email:
+  path: '/send-test-email'
+  controller: 'App\Controller\TestController::sendTestEmail'
+# config/routes.yaml
+app_admin_index:
+  path: /admin1
+  controller: App\Controller\AdminController::index
+  methods: GET
+# config/routes.yaml
+signInPage:
+  path: /signin
+  controller: App\Controller\SignInController::index
+  methods: GET
+
+

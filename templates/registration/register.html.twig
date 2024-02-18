@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sign in and Sign up Form{% endblock %}</title>
+    {% block css %}
+        <link href="{{ asset('Front/css/user/stylelogin.css') }}" rel="stylesheet" />
+        <link href="{{ asset('Front/css/user/login.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            select {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                appearance: none;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: #999999;
+            }
+            .hidden {
+                display: none;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                    <!-- Votre formulaire de connexion existant -->
+                    {{ form_start(registrationForm) }}
+
+                <div class="input-field">
+                    {{ form_label(registrationForm.nom, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+
+                    {{ form_widget(registrationForm.nom, {'attr': {'class': 'rounded-input', 'placeholder': 'Nom'}}) }}
+                    {{ form_errors(registrationForm.nom) }}
+                </div>
+
+
+                <div class="input-field">
+                        {{ form_label(registrationForm.prenom, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.prenom, {'attr': {'class': 'rounded-input',  'placeholder': 'Prenom'}}) }}
+                        {{ form_errors(registrationForm.prenom) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.email, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'rounded-input',  'placeholder': 'Email'}}) }}
+                        {{ form_errors(registrationForm.email) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.role, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.role, {'attr': {'class': 'rounded-input'}}) }}
+                        {{ form_errors(registrationForm.role) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.sexe, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.sexe,{'attr': {'class': 'rounded-input'}}) }}
+                        {{ form_errors(registrationForm.sexe) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.numerotelephone, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.numerotelephone,{'attr': {'class': 'rounded-input',  'placeholder': 'Phone'}}) }}
+                        {{ form_errors(registrationForm.numerotelephone) }}
+                    </div>
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.ville, null, {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.ville, {'attr': {'class': 'rounded-input'}}) }}
+                        {{ form_errors(registrationForm.ville) }}
+                    </div>
+
+
+
+                    <div class="input-field">
+                        {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'style': 'display: block; margin-bottom: 5px;'}}) }}
+                        {{ form_widget(registrationForm.plainPassword,{'attr': {'class': 'rounded-input',  'placeholder': 'Password'}}) }}
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
+
+
+                    {{ form_row(registrationForm.profileImageFile) }}
+
+
+                    <div>
+                        {{ form_label(registrationForm.agreeTerms, 'Accept Terms and Conditions', {'label_attr': {'style': 'display: block; margin-bottom: 10px;'}}) }}
+                        <div class="custom-control custom-switch">
+                            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'custom-control-input', 'type': 'checkbox'}}) }}
+                            <label class="custom-control-label" for="{{ registrationForm.agreeTerms.vars.id }}">I agree</label>
+                        </div>
+                    </div>
+
+
+                <input type="submit" value="Register" class="btn solid" />
+
+                {{ form_end(registrationForm) }}
+
+
+
+
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here?</h3>
+                    <p>Welcome! Sign up to access all features. Already have an account? Enter your information.</p>
+                    <a href="{{ path('app_login') }}"><button class="btn transparent">Sign In</button></a>
+                    <a href="{{ path('homePage') }}"><button class="btn transparent">Home</button></a>
+                </div>
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>One of us?</h3>
+                    <p>Welcome to our  community! Join us by creating an account to access all the features we offer.
+                        <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                        <a href="{{ path('homePage') }}"><button class="btn transparent">Home</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('Front/js/user/app.js') }}"></script>
+    <script src="{{ asset('Front/js/user/control.js') }}"></script>
+    <script src="{{ asset('Front/js/user/form.js') }}"></script>
+{% endblock %}
+</body>
+</html>
+

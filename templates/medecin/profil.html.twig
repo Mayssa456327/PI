@@ -1,0 +1,50 @@
+{% extends 'base5.html.twig' %}
+
+{% block title %}Profil du Médecin{% endblock %}
+{% block body %}
+
+{% block style %}
+        <style>
+            /* Style pour le lien de profil */
+        .profile-link {
+            position: absolute;
+            top: 10px; /* Ajustez la position selon vos besoins */
+            right: 10px; /* Ajustez la position selon vos besoins */
+            color: #007bff; /* Couleur du lien */
+            text-decoration: none;
+            margin-left: 10px; /* Espace entre les liens */
+        }
+    </style>
+{% endblock %}
+
+
+{% block corps %}
+    <h1>Profil du Médecin</h1>
+    <a href="{{ path('app_medecin_edit', {'id': medecin.id}) }}" class="btn btn-primary profile-btn">Modifier les coordonnées</a>
+
+
+    <!-- Placer la photo de profil en haut à droite -->
+    <div style="position: absolute; top: 10px; right: 10px;">
+        {% if medecin.profileImage is not null %}
+            <img src="{{ asset('uploads/profile_images/' ~ medecin.profileImage) }}" alt="Photo de profil" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
+        {% else %}
+            <!-- Afficher une image par défaut si aucune image de profil n'est définie -->
+            <div style="width: 100px; height: 100px; background-color: #f0f0f0; border-radius: 50%;"></div>
+        {% endif %}
+
+    </div>
+
+    <!-- Afficher les autres informations du médecin -->
+    <p>Nom: {{ medecin.nom }}</p>
+    <p>Prénom: {{ medecin.prenom }}</p>
+    <p>Email: {{ medecin.email }}</p>
+    <p>Numéro de téléphone: {{ medecin.numerotelephone }}</p>
+    <p>Rôle: {{ medecin.role }}</p>
+    <p>Ville: {{ medecin.ville }}</p>
+    <p>Sexe: {{ medecin.sexe }}</p>
+
+    <!-- Lien de modification vers la page de formulaire de mise à jour -->
+
+{% endblock %}
+{% endblock %}
+
