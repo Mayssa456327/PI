@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints\Regex; // Add this line
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
-use Symfony\Component\Form\Extension\Core\Type\FileType; // Ajoutez cette ligne
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 
@@ -72,7 +72,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('role', ChoiceType::class, [
                 'choices' => [
-                    'ADMIN' => 'ADMIN',
+
                     'MEDECIN' => 'MEDECIN',
                     'PATIENT' => 'PATIENT',
                     
