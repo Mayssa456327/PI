@@ -27,6 +27,17 @@
             .hidden {
                 display: none;
             }
+            .forget-password-btn {
+                text-decoration: none;
+                color: #555;
+                font-size: 14px;
+                margin-top: 10px;
+                display: block;
+            }
+
+            .forget-password-btn:hover {
+                color: #007bff; /* Change the color on hover if desired */
+            }
         </style>
     {% endblock %}
 </head>
@@ -35,20 +46,24 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-            <form method="POST" action="{{ path('app_login') }}"     class="sign-in-form">
+                <form method="POST" action="{{ path('app_login') }}" class="sign-in-form">
                     <!-- Votre formulaire de connexion existant -->
                     <h2 class="title">Sign in</h2>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="email" placeholder="Email" name="email" required />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" required />
-                </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="email" placeholder="Email" name="email" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" required />
+                    </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <input type="hidden" name="login" value="login">
                     <input type="submit" value="Login" class="btn solid" />
+
+                    <!-- Forget Password Button -->
+                    <a href="{{ path('forgotten_password') }}" class="forget-password-btn">Forget Password?</a>
+
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">

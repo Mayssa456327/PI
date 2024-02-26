@@ -8,6 +8,8 @@ use App\Form\RegistrationFormType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -151,11 +153,20 @@ class   Admin1Controller extends AbstractController
         ]);
     }
 
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     #[Route('admin1/{id}', name: 'app_admin1_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user,UserRepository $userRepository): Response
     {
+         $userCount = $userRepository->createQueryBuilder('u')
+            ->select('COUNT(u.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
         return $this->render('admin1/show.html.twig', [
             'user' => $user,
+            'userCount' => $userCount,
         ]);
     }
 
@@ -297,5 +308,25 @@ class   Admin1Controller extends AbstractController
 
         // Redirigez l'utilisateur vers la page des utilisateurs (ou toute autre page souhaitée)
         return $this->redirectToRoute('app_admin1_index');
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    #[Route('/user-stats/{role}', name: 'user_stats')]
+    public function userStats($role, UserRepository $userRepository): Response
+    {
+        $userCount = $userRepository->createQueryBuilder('u')
+            ->select('COUNT(u.id)')
+            ->where('u.role = :role')
+            ->setParameter('role', $role)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $this->render('admin1/user_stats.html.twig', [
+            'userCount' => $userCount,
+            'role' => $role,
+        ]);
     }
 }

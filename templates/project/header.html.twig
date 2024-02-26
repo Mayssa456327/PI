@@ -1,85 +1,51 @@
+{% extends 'base.html.twig' %}
 
-<!-- header section start -->
-<div class="header_section">
-  <nav class="desktop_header navbar navbar-expand-lg navbar-light bg-light">
-    <div class="logo"></div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('homePage') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('aboutPage') }}">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('doctorPage') }}">Doctor</a>
-        </li>
-        <li class="nav-item">
-          <a class="logo_main" href="{{ path('homePage') }}">
-            <img src="{{ asset('Front/img/logo.png') }}">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('departementsPage') }}">Departments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('blogPage') }}">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('contactPage') }}">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><img src="{{ asset('Front/img/search-icon.png') }}"></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ path('app_login') }}">>LOGIN</a>
-        </li>              
-      </ul>
-    </div>
-  </nav>
+{% block content %}
+  <!-- header section starts  -->
 
-  <nav class="mobile_header navbar navbar-expand-lg navbar-light bg-light">
-    <div class="logo">
-      <a href="{{ path('homePage') }}">
-        <img src="{{ asset('Front/img/logo.png') }}">
-      </a>
+  <header class="header">
+
+    <a href="#" class="logo ">
+      <img src="{{ asset('images/logo.png') }}" alt="">
+    </a>
+
+    <h1 class="heading ">DocDirect  </h1>
+    <h1 class="heading ">     </h1>
+    <h1 class="heading ">     </h1>
+
+    <nav class="navbar">
+
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#products">products</a>
+      <a href="#blogs">events</a>
+      <a href="#review">review</a>
+      <a href="#contact">contact</a>
+
+    </nav>
+
+    <div class="icons">
+      <div class="fas fa-search" id="search-btn"></div>
+      <div class="fas fa-shopping-cart" id="cart-btn"></div>
+      <div class="col-lg-2 col-12">
+        <div class="get-quote">
+          <a href="{{ path('app_login') }}" class="btn">Login</a>
+        </div>
+      </div>
+      <div  href="#products" class="fas fa-sign-in-alt " id="login-btn" > </div>
+      <div class="fas fa-bars" id="menu-btn"></div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('homePage') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('aboutPage') }}">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('doctorPage') }}">Doctor</a>
-        </li>
-        <li class="nav-item">
-          <a class="logo_main" href="{{ path('homePage') }}">
-            <img src="{{ asset('Front/img/logo.png') }}">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('departementsPage') }}">Departments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('blogPage') }}">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('contactPage') }}">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><img src="{{ asset('Front/img/search-icon.png') }}"></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">LOGIN</a>
-        </li>              
-      </ul>
+
+    <div class="search-form">
+      <input type="search" id="search-box" placeholder="search here...">
+      <label for="search-box" class="fas fa-search"></label>
     </div>
-  </nav>
-</div>
-<!-- header section end -->
+
+
+
+  </header>
+
+
+
+{% endblock %}
+
