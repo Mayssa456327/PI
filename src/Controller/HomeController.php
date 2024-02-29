@@ -98,7 +98,7 @@ class HomeController extends AbstractController
     /**
      * @throws RandomException
      */
-    #[Route('/oubli_pass', name: 'forgotten_password')]
+    /**#[Route('/oubli_pass', name: 'forgotten_password')]
     public function forgotPassword(Request $request, \Swift_Mailer $mailer): Response
     {
         $form = $this->createForm(ResetPassType::class);
@@ -162,4 +162,6 @@ class HomeController extends AbstractController
             'token' => $token,
         ]);
     }
+     */
+
 }
