@@ -7,10 +7,14 @@
             <div class="section-header text-center">
                 <div id="google_translate_element"></div>
                 <h4 style="margin-top:50px; margin-bottom:50px;">Liste des Evenements</h4>
+                
             </div>
+            
             <div class="row">
+            
                 {% for evenement in evenements %}
                     <div class="col-lg-4 col-md-6 mb-4">
+                    
                         <div class="service-item">
                             <img src="{{ asset('uploads/' ~ evenement.imageEvenement)}}" style="width:360px; height:250px;" alt="">
                             <center><h2>{{ evenement.nomEvenement }}</h2></center>
@@ -37,4 +41,5 @@
     </div>
     <br>
     <center><div class="btn px-10 py-10" {{knp_pagination_render(evenements) }} </div></center>
+    
 {% endblock %}

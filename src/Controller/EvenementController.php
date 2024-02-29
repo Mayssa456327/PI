@@ -117,6 +117,8 @@ class EvenementController extends AbstractController
             $request->query->getInt('page', 1),
             3
         );
+
+        
         
 
     return $this->render('evenement/indexFront.html.twig', [

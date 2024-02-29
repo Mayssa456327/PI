@@ -18,23 +18,24 @@ class Evenement
     private ?int $id = null;
  
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:"veuillez saisir l'image de l'evenement ")]
     private  $imageEvenement = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length(min:5)]
-    #[Assert\Length(max:20)]
+    #[Assert\Length(max:70)]
     #[Assert\NotBlank (message:"veuillez saisir le Type de l'evenement ")]
     private ?string $typeEvenement = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length(min:5)]
-    #[Assert\Length(max:20)]
+    #[Assert\Length(max:70)]
     #[Assert\NotBlank (message:"veuillez saisir le nom de l'evenement ")]
     private ?string $nomEvenement = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length(min:5)]
-    #[Assert\Length(max:20)]
+    #[Assert\Length(max:100)]
     #[Assert\NotBlank (message:"veuillez saisir le lieu de l'evenement ")]
     private ?string $lieuEvenement = null;
 
@@ -47,6 +48,9 @@ class Evenement
     private ?\DateTimeInterface $dateFin = null;
 
     #[ORM\Column]
+    #[Assert\Length(min:2)]
+    #[Assert\Length(max:3)]
+    #[Assert\NotBlank (message:"veuillez saisir le budge de l'evenement ")]
     private ?float $budget = null;
 
     #[ORM\OneToMany(targetEntity: Sponsor::class, mappedBy: 'Evenement')]

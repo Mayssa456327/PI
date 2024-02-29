@@ -6,6 +6,7 @@ use App\Entity\Evenement;
 use App\Entity\Sponsor;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,7 @@ class SponsorType extends AbstractType
     {
         $builder
             ->add('nomSponsor')
-            ->add('emailSponsor')
+            ->add('emailSponsor',EmailType::class)
             ->add('budget')
             ->add('adresse')
             ->add('Evenement', EntityType::class, [
