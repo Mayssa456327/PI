@@ -1,0 +1,79 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Top 3 Blogs{% endblock %}
+
+
+
+{% block body %}    <style>
+    /* Add custom styles for the chart container */
+    .chart-card {
+        max-width: 500px; /* Adjust width */
+        width: 100%; /* Take full width of the container */
+        margin: 20px auto 20px 0; /* Adjust margin */
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+        border-radius: 8px;
+        padding: 20px; /* Adjust padding */
+    }
+</style>
+    <div class="container">
+        <div class="row justify-content-start"> {# Align to the left #}
+            <div class="col-md-8">
+                <div class="chart-card">
+                    <h3 class="text-center mb-2">Top 3 active blogs</h3>
+                    <div class="card-body">
+                        <canvas id="topBlogsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('topBlogsChart').getContext('2d');
+            var topBlogsData = {
+                labels: [
+                    {% for blog in topBlogs %}
+                    '{{ blog.titre }}',
+                    {% endfor %}
+                ],
+                datasets: [{
+                    data: [
+                        {% for blog in topBlogs %}
+                        {{ blog.commentCount }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            var topBlogsChart = new Chart(ctx, {
+                type: 'pie',
+                data: topBlogsData,
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: false,
+                    }
+                }
+            });
+        });
+            
+    </script>
+    
+{% endblock %}

@@ -7,6 +7,8 @@
 
 parameters:
     profile_images_directory: '%kernel.project_dir%/public/uploads/profile_images'
+    uploads: '%kernel.project_dir%/public/uploads/'
+    image_directory: '%kernel.project_dir%/public/uploadss/'
 
 
 services:
@@ -38,9 +40,9 @@ services:
             - '../src/Kernel.php'
     App\Service\SmsService:
         arguments:
-            $twilioSid: '%env(TWILIO_SID)%'
-            $twilioAuthToken: '%env(TWILIO_AUTH_TOKEN)%'
-            $twilioFromNumber: '%env(TWILIO_FROM_NUMBER)%'
+            $twilioSid: 'ACce898bff8920225c33b1c5f5dc01894a'
+            $twilioAuthToken: '10f60833dc7f033154fbe085fa4dc6ed'
+            $twilioFromNumber: '+12512202482'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

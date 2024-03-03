@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hazem{% endblock %}
+
+{% block body %}
+    <h1>Hazem</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hazem.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hazem_index') }}">back to list</a>
+
+    <a href="{{ path('app_hazem_edit', {'id': hazem.id}) }}">edit</a>
+
+    {{ include('hazem/_delete_form.html.twig') }}
+{% endblock %}

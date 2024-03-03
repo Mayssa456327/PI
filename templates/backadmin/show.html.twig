@@ -1,0 +1,36 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Blog Details{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="card-title">{{ blog.titre }}</h1>
+                <p class="card-text"><strong>Type:</strong> {{ blog.type }}</p>
+                <p class="card-text"><strong>Date:</strong> {{ blog.date|date('d-m-Y H:i') }}</p>
+                <div class="card-text">
+                    <strong>Content:</strong>
+                    <p>{{ blog.content }}</p>
+                </div>
+                <div class="card-text">
+                    <strong>Image:</strong>
+                    <img src="{{ asset('uploadss/' ~ blog.image) }}" alt="{{ blog.titre }}" class="img-fluid">
+                </div>
+                <hr>
+                <h2>Comments</h2>
+                {% if blog.comments|length > 0 %}
+                    <ul class="list-group">
+                        {% for comment in blog.comments %}
+                            <li class="list-group-item">{{ comment.content }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No comments yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

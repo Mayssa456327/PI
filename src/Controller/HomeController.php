@@ -43,11 +43,7 @@ class HomeController extends AbstractController
     {
         return $this->render('project/departements.html.twig');
     }
-    #[Route('/blog', name: 'blogPage')]
-    public function blog(): Response
-    {
-        return $this->render('project/blog.html.twig');
-    }
+   
     #[Route('/contact', name: 'contactPage')]
     public function contact(): Response
     {
@@ -98,7 +94,7 @@ class HomeController extends AbstractController
     /**
      * @throws RandomException
      */
-    #[Route('/oubli_pass', name: 'forgotten_password')]
+    /**#[Route('/oubli_pass', name: 'forgotten_password')]
     public function forgotPassword(Request $request, \Swift_Mailer $mailer): Response
     {
         $form = $this->createForm(ResetPassType::class);
@@ -162,4 +158,6 @@ class HomeController extends AbstractController
             'token' => $token,
         ]);
     }
+     */
+
 }

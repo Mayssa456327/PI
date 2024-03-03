@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\PdfGeneratorService;
 use App\Service\PdfGenerator2;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -85,29 +86,19 @@ class   Admin1Controller extends AbstractController
     /**
      * @Route("/pdf", name="PDF_User", methods={"GET"})
      */
-    public function pdf(UserRepository $UserRepository)
+    public function pdf(EntityManagerInterface $entityManager): Response
     {
-        // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
+        $user = $entityManager
+            ->getRepository(User::class)
+            ->findAll();
 
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('admin1/index.html.twig', [
-            'users' => $UserRepository->findAll(),
-        ]);
+        $html = $this->renderView('admin1/PdfUsers.html.twig', ['users' => $user]);
+        $pdfGeneratorService = new PdfGeneratorService();
+        $pdf = $pdfGeneratorService->generatePdf($html);
 
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("ListeDesUsers.pdf", [
-            "users" => true
+        return new Response($pdf, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="document.pdf"',
         ]);
     }
 

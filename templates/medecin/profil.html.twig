@@ -19,14 +19,13 @@
 
 
 {% block corps %}
-    <h1>Profil du Médecin</h1>
-    <a href="{{ path('app_medecin_edit', {'id': medecin.id}) }}" class="btn btn-primary profile-btn">Modifier les coordonnées</a>
+    <h1>Profil </h1>
 
 
     <!-- Placer la photo de profil en haut à droite -->
     <div style="position: absolute; top: 10px; right: 10px;">
-        {% if medecin.profileImage is not null %}
-            <img src="{{ asset('uploads/profile_images/' ~ medecin.profileImage) }}" alt="Photo de profil" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
+        {% if user.profileImage is not null %}
+            <img src="{{ asset('uploads/profile_images/' ~ user.profileImage) }}" alt="Photo de profil" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
         {% else %}
             <!-- Afficher une image par défaut si aucune image de profil n'est définie -->
             <div style="width: 100px; height: 100px; background-color: #f0f0f0; border-radius: 50%;"></div>
@@ -35,13 +34,13 @@
     </div>
 
     <!-- Afficher les autres informations du médecin -->
-    <p>Nom: {{ medecin.nom }}</p>
-    <p>Prénom: {{ medecin.prenom }}</p>
-    <p>Email: {{ medecin.email }}</p>
-    <p>Numéro de téléphone: {{ medecin.numerotelephone }}</p>
-    <p>Rôle: {{ medecin.role }}</p>
-    <p>Ville: {{ medecin.ville }}</p>
-    <p>Sexe: {{ medecin.sexe }}</p>
+    <p>Nom: {{ user.nom }}</p>
+    <p>Prénom: {{ user.prenom }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Numéro de téléphone: {{ user.numerotelephone }}</p>
+    <p>Rôle: {{ user.role }}</p>
+    <p>Ville: {{ user.ville }}</p>
+    <p>Sexe: {{ user.sexe }}</p>
 
     <!-- Lien de modification vers la page de formulaire de mise à jour -->
 

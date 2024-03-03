@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hazem index{% endblock %}
+
+{% block body %}
+    <h1>Hazem index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hazem in hazems %}
+            <tr>
+                <td>{{ hazem.id }}</td>
+                <td>
+                    <a href="{{ path('app_hazem_show', {'id': hazem.id}) }}">show</a>
+                    <a href="{{ path('app_hazem_edit', {'id': hazem.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hazem_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}New Sponsor{% endblock %}
+
+{% block body %}
+    <h1>Create new Sponsor</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {{ include('sponsor/_form.html.twig') }}
+    <a href="{{ path('app_sponsor_index') }}">back to list</a>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

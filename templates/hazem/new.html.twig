@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Hazem{% endblock %}
+
+{% block body %}
+    <h1>Create new Hazem</h1>
+
+    {{ include('hazem/_form.html.twig') }}
+
+    <a href="{{ path('app_hazem_index') }}">back to list</a>
+{% endblock %}

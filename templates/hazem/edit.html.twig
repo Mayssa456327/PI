@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Hazem{% endblock %}
+
+{% block body %}
+    <h1>Edit Hazem</h1>
+
+    {{ include('hazem/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_hazem_index') }}">back to list</a>
+
+    {{ include('hazem/_delete_form.html.twig') }}
+{% endblock %}
