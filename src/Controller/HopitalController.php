@@ -33,7 +33,7 @@ class HopitalController extends AbstractController
             $entityManager->persist($hopital);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_hopital_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('Hopital_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('hopital/new.html.twig', [
@@ -59,7 +59,7 @@ class HopitalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_hopital_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('Hopital_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('hopital/edit.html.twig', [
