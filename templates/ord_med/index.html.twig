@@ -1,0 +1,25 @@
+{% extends 'ds/index.html.twig' %}
+
+{% block title %}Hello OrdMedController!{% endblock %}
+
+{% block body %}
+
+    <section class="products" id="products">
+        <div class="box-container">
+            {% for ordmed in ordmeds %}
+                <div class="box">
+                    <div class="content">
+                        <h3>{{ ordmed.NomP }} <h3>
+                                <h3> <span>{{ ordmed.IDP }}</span><h3>
+                                    <h3><span>{{ ordmed.NomM }}</span><h3>
+                                        <h1>{{ ordmed.Description }}<h1>
+                                            <h3> <button onclick="generatePDF('{{ ordmed.NomP }}', '{{ ordmed.IDP }}', '{{ ordmed.NomM }}', '{{ ordmed.Description }}')">Generate PDF</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+{% endblock %}

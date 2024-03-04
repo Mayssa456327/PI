@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Certificat Médical</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .patient-info {
+            margin-top: 20px;
+        }
+
+        .patient-info th {
+            text-align: left;
+            width: 150px;
+        }
+
+        .patient-info td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cert">
+
+    <h1>Certificat Médical</h1>
+
+    <p>Je soussigné(e), {{ cert.NomM }}, docteur en médecine, certifie que {{ cert.NomP }}, né(e) le {{ cert.Date }}, a été examiné(e) à cette date et est actuellement en traitement médical pour {{ cert.Description }} dans le cadre de [Raison de la Consultation Médicale].</p>
+
+    <table class="patient-info">
+        <tr>
+            <th>Nom du Patient :</th>
+            <td>{{ cert.NomP }}</td>
+        </tr>
+        <tr>
+            <th>ID de Patient :</th>
+            <td>{{ cert.IDP }}</td>
+        </tr>
+        <tr>
+            <th>Description :</th>
+            <td>{{ cert.Description }}</td>
+        </tr>
+        <tr>
+            <th>Nom du Médecin  :</th>
+            <td>{{ cert.NomM }}</td>
+        </tr>
+        <tr>
+            <th>Date de création :</th>
+            <td>{{ cert.Date }}</td>
+        </tr>
+    </table>
+</div>
+{% if barcodePath is defined %}
+    <img src="{{ barcodePath }}" alt="Barcode">
+{% endif %}
+</body>
+</html>

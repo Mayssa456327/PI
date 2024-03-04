@@ -1,0 +1,27 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+homenotlogin:
+    path: /homenotlogin
+    controller: App\Controller\HomenotloginController::homenotlogin
+    methods: [ 'GET' ]
+
+backadmin:
+    path: /backadmin
+    controller: App\Controller\BackadminController::backadmin
+    methods: [ 'GET' ]
+
+ordmed:
+    path: /ordmed
+    controller: App\Controller\OrdMedController::ordmed
+    methods: [ 'GET' ]
+daman:
+    path: /deman
+    controller: App\Controller\DemAnController::deman
+    methods: [ 'GET' ]
+cert:
+    path: /cert
+    controller: App\Controller\CertController::cert
+    methods: [ 'GET' ]
+

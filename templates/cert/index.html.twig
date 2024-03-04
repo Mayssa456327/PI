@@ -1,0 +1,27 @@
+{% extends 'ds/index.html.twig' %}
+
+{% block title %}Hello OrdMedController!{% endblock %}
+
+{% block body %}
+
+
+    <section class="products" id="products">
+        <div class="box-container">
+            {% for cert in certs %}
+                <div class="box">
+                    <div class="content">
+                        <h3>{{ cert.NomP }} <h3>
+                                <h3> <span>{{ cert.IDP }}</span><h3>
+                                        <h3><span>{{ cert.NomM }}</span><h3>
+                                                <h3><span>{{ cert.Date }}</span><h3>
+                                                <h1>{{ cert.Description }}<h1>
+                                                        <a <button href="{{ path('attachment.pdf', { 'id': cert.id }) }}" class="dropdown-item">            Generate PDF</button>        </div> </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
