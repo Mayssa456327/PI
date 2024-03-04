@@ -1,0 +1,14 @@
+{% extends 'base3.html.twig' %}
+{% block body %}
+<style>
+    .title {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}
+</style>
+
+    <h1 class="title">Ajouter un Hopital</h1>
+    {{ include('hopital/_form.html.twig') }}
+
+{% endblock %}

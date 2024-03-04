@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Réservation Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Réservation Details</h1>
+        <table>
+            <tr>
+                <th>Nom du Patient</th>
+                <td>{{ reservation.nomPatient }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reservation.email }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ reservation.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Date de Début</th>
+                <td>{{ reservation.dateDebut|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Date de Fin</th>
+                <td>{{ reservation.dateFin|date('Y-m-d')}}</td>
+            </tr>
+            <tr>
+                <th>QR Code</th>
+                <td><img src="{{ qrCode }}" alt="QR Code"></td>
+             </tr>
+        </table>
+    </div>
+</body>
+</html>

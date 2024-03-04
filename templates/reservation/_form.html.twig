@@ -1,0 +1,77 @@
+
+{% block body %}
+<style>
+/* styles.css */
+.form-container {
+    width: 50%; /* Ajustez la largeur du formulaire selon vos besoins */
+    margin: auto; /* Centre le formulaire horizontalement */
+    margin-top: 50px; /* Ajoute de l'espace en haut du formulaire */
+    padding: 100px; /* Ajoute du rembourrage à l'intérieur du conteneur du formulaire */
+    background-color: #f9f9f9; /* Couleur de fond du formulaire */
+    border-radius: 8px; /* Ajoute des coins arrondis au formulaire */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre à la bordure du formulaire */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Ajoute de l'espace entre les groupes de champs */
+}
+
+.my-label {
+    font-weight: bold; /* Rend les libellés en gras */
+}
+
+.form-control {
+    width: 100%; /* Ajuste la largeur des champs de formulaire */
+    padding: 10px; /* Ajoute du rembourrage à l'intérieur des champs de formulaire */
+    border: 1px solid #ced4da; /* Ajoute une bordure aux champs de formulaire */
+    border-radius: 4px; /* Ajoute des coins arrondis aux champs de formulaire */
+    box-sizing: border-box; /* Inclut le remplissage et la bordure dans la largeur et la hauteur */
+}
+
+.btn {
+    width: 100%; /* Ajuste la largeur du bouton */
+    padding: 10px; /* Ajoute du rembourrage à l'intérieur du bouton */
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte du bouton */
+    border: none; /* Supprime la bordure du bouton */
+    border-radius: 4px; /* Ajoute des coins arrondis au bouton */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Change la couleur de fond au survol du bouton */
+}
+
+</style>
+
+
+    <div class="form-container">
+        {{ form_start(form, {'attr': {'class': 'my-form'}}) }}
+        <div class="form-group">
+            {{ form_label(form.nomPatient, 'Nom de Patient:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.nomPatient, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email, 'Email:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.telephone, 'Téléphone:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateDebut, 'Date Debut:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateFin, 'Date Fin:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.Hopital, 'Hopital:', {'label_attr': {'class': 'my-label'}}) }}
+            {{ form_widget(form.Hopital, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ button_label|default('Reserver') }}</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

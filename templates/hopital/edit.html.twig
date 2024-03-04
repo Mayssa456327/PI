@@ -1,0 +1,30 @@
+{% extends 'base3.html.twig' %}
+
+
+{% block body %}
+ <style>
+    .title {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}
+  .delete-button {
+        background-color: red;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-right: 5px;
+        display: block; /* Pour afficher le bouton sur une nouvelle ligne */
+        margin-top: 10px; /* Pour ajouter un peu d'espace au-dessus du bouton */
+        margin-left: auto; /* Pour aligner le bouton au centre */
+        margin-right: auto; /* Pour aligner le bouton au centre */
+        width: fit-content; /* Pour ajuster la largeur du bouton en fonction de son contenu */
+    }
+</style>
+    <h1 class="title">Modifier Hopital</h1>
+
+    {{ include('hopital/_form.html.twig', {'button_label': 'Update'},) }}
+    <a href="{{ path('app_hopital_delete', {'id': hopital.id}) }}" onclick="return confirm('Are you sure you want to delete this hospital?')" class="delete-button">Supprimer</a>
+
+{% endblock %}
