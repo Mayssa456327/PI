@@ -1,0 +1,130 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Custom CSS for search input and buttons */
+        .custom-search {
+            display: flex;
+        }
+        .custom-search .form-control {
+            border-radius: 20px; /* Adjust border-radius for lower rounded corners */
+        }
+        .custom-search .btn {
+            border-radius: 20px; /* Adjust border-radius for lower rounded corners */
+            background-color: #4E5D6C; /* Change background color */
+            color: white; /* Change text color */
+            border: none; /* Remove border */
+            padding: 10px 20px; /* Adjust padding */
+            transition: all 0.3s ease; /* Add transition effect */
+        }
+        .custom-search .btn:hover {
+            background-color: #37454D; /* Change background color on hover */
+        }
+        .custom-search .btn:focus {
+            outline: none; /* Remove focus outline */
+        }
+        .card-section {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .table-card {
+            border: none;
+        }
+        /* Custom CSS to override rounded shape of images */
+        .table-card img {
+            border-radius: 0; /* Remove rounded border */
+        }
+    </style>
+      <style>
+            .btn-success {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+            .btn-danger {
+                background-color: #dc3545;
+                color: #fff;
+            }
+        </style>
+        
+{% endblock %}
+
+{% block body %}
+<a href="{{ path('app_logout') }}" class="btn btn-danger ml-2">Deconnecter</a>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card-section">
+                    <form action="{{ path('app_blog_indexback') }}" method="get" class="custom-search">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search by title or type" value="{{ app.request.query.get('search') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card-section">
+                    <div class="card table-card">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for blog in blogs %}
+                                    <tr>
+                                        <td><img src="{{ asset('uploadss/' ~ blog.image) }}" alt="{{ blog.titre }}" style="height: 100px; width: 100px;"></td>
+                                        <td>{{ blog.titre }}</td>
+                                        <td>{{ blog.content }}</td>
+                                        <td>{{ blog.date|date('d-m-Y') }} at {{ blog.date|date('H') }}h</td>
+                                        <td>
+                                            <a href="{{ path('app_blog_editback', {'id': blog.id}) }}">Edit</a>
+                                            <a href="{{ path('app_blog_showback', {'id': blog.id}) }}">See Details</a>
+                                            <a href="{{ path('app_blog_delete', {'id': blog.id}) }}" class="btn btn-primary"  onclick="return confirm('Are you sure you want to delete this Blog?')">Delete</a>
+                                            {{ include('blog/_delete_form.html.twig') }}
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <a href="{{ path('app_blog_new') }}" class="btn btn-success">Create New</a>
+                </div>
+                <div class="card-section">
+                    <form action="{{ path('app_blog_index_sorted') }}" method="get">
+                        <button type="submit" class="btn btn-secondary">Sort by Date</button>
+                    </form>
+                </div>
+                 <div class="card-section">
+                    <a href="{{ path('top_blogs') }}" class="btn btn-primary">Top Blogs</a>
+                </div>
+                 <div class="card-section">
+                    <a href="{{ path('topLikedComments') }}" class="btn btn-secondary">Top Liked Blogs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

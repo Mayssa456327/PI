@@ -45,4 +45,71 @@ class EvenementRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function SortByNomEvenement(){
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.nomEvenement','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+public function SortByDateDebut()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.dateDebut','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+
+public function SortBylieuEvenement()
+{
+    return $this->createQueryBuilder('e')
+        ->orderBy('e.lieuEvenement','ASC')
+        ->getQuery()
+        ->getResult()
+        ;
+}
+
+
+
+
+
+
+
+
+public function findBynomEvenement( $nomEvenement)
+{
+    return $this-> createQueryBuilder('e')
+        ->andWhere('e.nomEvenement LIKE :nomEvenement')
+        ->setParameter('nomEvenement','%' .$nomEvenement. '%')
+        ->getQuery()
+        ->execute();
+}
+public function findBylieuEvenement( $lieuEvenement)
+{
+    return $this-> createQueryBuilder('e')
+        ->andWhere('e.lieuEvenement LIKE :lieuEvenement')
+        ->setParameter('lieuEvenement','%' .$lieuEvenement. '%')
+        ->getQuery()
+        ->execute();
+}
+public function findBydateDebut( $dateDebut)
+{
+    return $this-> createQueryBuilder('e')
+        ->andWhere('e.dateDebut LIKE :dateDebut')
+        ->setParameter('dateDebut','%' .$dateDebut. '%')
+        ->getQuery()
+        ->execute();
+}
+public function findBydateFin( $dateFin)
+{
+    return $this-> createQueryBuilder('e')
+        ->andWhere('e.dateFin LIKE :dateFin')
+        ->setParameter('dateFin','%' .$dateFin. '%')
+        ->getQuery()
+        ->execute();
+}
 }

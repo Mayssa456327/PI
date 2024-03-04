@@ -1,3 +1,4 @@
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
@@ -14,5 +15,7 @@ signInPage:
   path: /signin
   controller: App\Controller\SignInController::index
   methods: GET
+  
+
 
 

@@ -47,7 +47,7 @@ class MedecinController extends AbstractController
 
         // Passez les informations du médecin à la vue
         return $this->render('medecin/profil.html.twig', [
-            'medecin' => $medecin,
+            'user' => $medecin,
         ]);
     }
 }

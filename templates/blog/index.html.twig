@@ -1,0 +1,39 @@
+{% extends 'base5.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block blogs %}
+<h1 class="heading"> our <span>blogs</span> </h1>
+<div class="box-container">
+    {% for blog in blogs %}
+
+    <div class="box">
+
+        <div class="image">
+            <img src="{{ asset('uploadss/' ~ blog.image) }}" alt="" style="!important;height: 250px; width: 250px;">
+        </div>
+        <div class="content">
+            <h3>{{ blog.titre }}</h3>
+            <div class="stars">
+                <p>{{ blog.content }}</p>
+            </div>
+            <div><span>{{ blog.date|date('d-m-Y') }} at {{ blog.date|date('H') }}h</span></div>
+
+            <!-- <a href="#" class="btn">see details</a>   -->
+
+            <a href="{{ path('app_blog_show', {'id': blog.id}) }}" class="btn">See Details</a>
+
+        </div>
+    </div>
+   
+    {% endfor %}
+
+
+</div>
+
+ <center><div class="btn px-10 py-10" {{knp_pagination_render(blogs) }} </div></center>
+
+
+
+
+    {% endblock %}

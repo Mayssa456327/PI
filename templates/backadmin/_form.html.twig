@@ -1,0 +1,40 @@
+{# Wrap the form in a container #}
+<div style="max-width: 500px; margin: auto; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); background-color: white; border-radius: 8px;">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {# Style each form field individually #}
+    <div style="margin-bottom: 15px;">
+        {{ form_label(form.type, 'type', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.type) }}
+    </div>
+
+    {# <div style="margin-bottom: 15px;">
+        {{ form_label(form.date, 'Date', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+    </div> #}
+
+    <div style="margin-bottom: 15px;">
+        {{ form_label(form.titre, 'titre', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.titre) }} {# This will render errors for the titre field #}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        {{ form_label(form.content, 'Content', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.content) }} {# This will render errors for the titre field #}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        {{ form_label(form.image, 'Image', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    {# Style the submit button #}
+    <button type="submit" class="btn" style="background-color: #4E5D6C; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        {{ button_label|default('Save') }}
+    </button>
+
+    {{ form_end(form) }}
+</div>

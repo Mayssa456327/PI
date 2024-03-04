@@ -1,0 +1,44 @@
+<div style="text-align: right;">
+            Date et heure actuelles : {{ "now"|date('Y-m-d H:i') }}
+        </div>
+        <div style="text-align: center;">
+    <img src="{{ asset('uploads/aaa.jpg') }}" style="width: 100px; height: 100px; display: inline-block;" alt="Description de votre image">
+</div>
+{% block title %}<h1>LISTES DES EVENEMENTS</h1>{% endblock %}
+
+{% block body %}
+<div>
+<table  border="3">
+        <thead >
+            <tr>
+            
+            
+                <th>Image</th>
+                <th>Type</th>
+                <th>Nom</th>
+                <th>Lieu</th>
+                <th>budget</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                
+                          
+            </tr>  
+        </thead>
+            <tbody>
+                        
+            
+                 {% for evenement in evenements %}
+            <tr>
+                <td><img src="{{ asset('uploads/' ~evenement.imageEvenement) }}" style=" width:50px; height:50px; " alt=""/></td>
+                <td>{{ evenement.typeEvenement }}</td>
+                <td>{{ evenement.nomEvenement }}</td>
+                <td>{{ evenement.lieuEvenement }}</td>
+                <td>{{ evenement.budget }} TND</td>
+                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d H:i') : '' }}</td>
+                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d H:i') : '' }}</td>
+                </tr>
+                        {% endfor %}
+             </tbody>
+</table>
+</div>
+{% endblock %}

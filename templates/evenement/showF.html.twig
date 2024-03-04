@@ -1,0 +1,39 @@
+{% extends 'base5.html.twig' %}
+
+{% block body %}
+
+<br>
+<br>
+    <div class="service" style="margin-left: 600px;"> 
+        <div class="container">
+            <div class="section-header text-center">
+                <div id="google_translate_element"></div>
+            </div>
+            <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="service-item">
+                            <img src="{{ asset('uploads/' ~ evenement.imageEvenement)}}" style="width:360px; height:250px;" alt="">
+                            <center><h2>{{ evenement.nomEvenement }}</h2></center>
+                            <p><strong style="color:#696969">Description:</strong> {{ evenement.typeEvenement }}</p>
+                            <p><strong style="color:#696969">Lieu:</strong> {{ evenement.lieuEvenement }}</p>
+                            <p><strong style="color:#696969">Budge Naicessaire:</strong> {{ evenement.budget }} TND</p>
+                            <p><strong style="color:#696969">Date de début:</strong> {{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</p>
+                            <p><strong style="color:#696969">Date de fin:</strong> {{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</p>
+                            {% if evenement.budget > 0 %}
+                            {% endif %}
+<h2 style ="color:red;" >Average Rating: {{ averageRating }}</h2>
+    {{ include('avis/_form.html.twig') }}
+                                <center><a href="{{ path('app_sponsor_new', {'idEvent': evenement.id}) }}" class="btn btn-primary">Sponsoriser</a></center>
+
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+{% endblock %}

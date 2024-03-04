@@ -35,7 +35,7 @@
 
         <a href="#home">home</a>
         <a href="#about">about</a>
-        <a href="#products">products</a>
+        <a href="/evenement">evenement</a>
         <a href="#blogs">events</a>
         <a href="#review">review</a>
         <a href="#contact">contact</a>
@@ -78,7 +78,8 @@
 
 
 
-
+{% block body %}
+{% endblock %}
 
 <!-- home section ends -->
 
@@ -408,7 +409,14 @@
 <!-- Include Bootstrap JavaScript library -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+{# Add this to your template where you want to include Starability #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/starability-basic@2.5.2/dist/starability-all.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/starability-basic@2.5.2/dist/starability-all.min.js"></script>
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   starability('.starability-basic');
+});
+</script>
 </body>
 </html>
